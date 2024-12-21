@@ -1,3 +1,6 @@
+using BdCourseWork.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace BdCourseWork
 {
     public class Program
@@ -8,6 +11,9 @@ namespace BdCourseWork
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Course_Work")));
 
             var app = builder.Build();
 
